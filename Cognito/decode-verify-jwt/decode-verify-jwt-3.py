@@ -17,9 +17,8 @@ def get_cognito_public_keys(
     # https://aws.amazon.com/blogs/compute/container-reuse-in-lambda/
 
     ## Example Usage ##
-    region = 'eu-west-1'
-    userpool_id = 'eu-west-1_76GpjDGR2'
-
+    region = 'us-east-1'
+    userpool_id = 'us-east-1_SovB8fiRm'
     keys = get_cognito_public_keys(region, userpool_id)
     """
     keys_url = f'https://cognito-idp.{region}.amazonaws.com/{userpool_id}/.well-known/jwks.json'
