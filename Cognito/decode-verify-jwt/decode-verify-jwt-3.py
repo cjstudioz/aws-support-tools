@@ -1,3 +1,4 @@
+import urllib
 import os
 import requests
 import json
@@ -7,6 +8,26 @@ from functools import lru_cache
 from jose import jwk, jwt
 from jose.utils import base64url_decode
 
+def hosted_ui(
+    domain_prefix:str,
+    region:str,
+    client_id:str,
+    redirect_uri:str,
+    response_type='token', #or code
+) -> str:
+    """
+    domain_prefix = 'testing-nuco'
+    region = 'eu-west-1'
+    client_id = '3h4pi1cc4dd84u4uutedgsquni'
+    redirect_uri = "https://d2vjwuugbmujh1.cloudfront.net/landing"
+    response_type = 'token'
+    hosted_ui(domain_prefix, regio, client_id, redirect_uri)  
+
+    """
+    params = [(k,v) for k,v in locals().items() if k not in ['domain_prefix', 'region']]
+    encoded_params = urllib.parse.urlencode(params)
+    res = f'https://{domain_prefix}.auth.{region}.amazoncognito.com/login?{encoded_params}'
+    return res
 
 @lru_cache()
 def get_cognito_public_keys(
@@ -61,6 +82,15 @@ def verified_claims(
 
 
 if __name__ == '__main__':
+    domain_prefix = 'testing-nuco'
+    region = 'eu-west-1'
+    client_id = '3h4pi1cc4dd84u4uutedgsquni'
+    redirect_uri = "https://d2vjwuugbmujh1.cloudfront.net/landing"
+    response_type = 'token'
+    url = hosted_ui(domain_prefix, region, client_id, redirect_uri)
+    print(url)
+
+
     region = 'us-east-1'
     userpool_id = 'us-east-1_SovB8fiRm'
     app_client_id = '4makg4kbaf49bt2pdm2vlrhkcm'
