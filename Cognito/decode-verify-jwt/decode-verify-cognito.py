@@ -85,8 +85,8 @@ if __name__ == '__main__':
     domain_prefix = 'testing-nuco'
     region = 'eu-west-1'
     client_id = '3h4pi1cc4dd84u4uutedgsquni'
-    redirect_uri = "https://d2vjwuugbmujh1.cloudfront.net/landing"
-    response_type = 'token'
+    redirect_uri = "https://3ustbw9p6d.execute-api.eu-west-1.amazonaws.com/dev/signin/callback"
+    response_type = 'code'
     url = hosted_ui(domain_prefix, region, client_id, redirect_uri)
     print(url)
 
