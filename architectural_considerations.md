@@ -1,13 +1,13 @@
 868982
 
-# Intro
+# Background / Context
 I understand the python ecosystem well. I’m relatively familiar with AWS’s core offerings and have worked with many equivalent proprietary components. However, I have less experience with how well these components integrate with python in a python centric ecosystem. 
 By that I don’t just mean the availability of a python API or boto3, but more importantly 
 -	is the api feature set complete and robust? 
 -	Are there impedance mismatches between the python API and the AWS components? 
 -	Are the APIs / usages pythonic such that my code remains concise and readable?
 
-# High Level Architectural Decisions 
+## High Level  Considerations 
 A non-exhaustive list of design decisions we need to make before we can evolve our codebase into the next phase.
 1.	Which AWS components integrate better with python and which have been known to struggle. 
 2.	Should we consider other languages for the latter in a micro-service decentralized architecture?
@@ -20,13 +20,15 @@ using Chalice or Serverless framework instead of lambdas directly.
 NOTE: by python I do not mean Django. 
 
 
-# Workloads 
+## Workloads 
 Many our workloads can be broken down into 3 types:
 a)	Internal (non api gateway) polling processes with fixed workload (no elasticity or spikes)
 b)	very sporadic lightweight external API calls.2 -3 calls per day with no foreseeable scaling. Could be triggered by end-user or internal event driven
 c)	end user driven workload which with reasonable predictability e.g. seasonal / peak time of day usage. Which will first start at under 1000 requests per day but potentially scale to hundreds of thousands to a million requests per day per endpoint.
 
-# Speficic Questions:
+# Specific Questions:
+Bearing the context above in mind, I'd like to discuss the specifics below 
+
 ## AWS Lambdas:
 Pros and Cons of Serverless framework vs Chalice. If we are purely python based, can you make a recommendation based on projected AWS investment.
 Does AWS support both equally?
