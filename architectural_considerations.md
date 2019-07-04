@@ -7,6 +7,8 @@ By that I don’t just mean the availability of a python API or boto3, but more 
 -	Are there impedance mismatches between the python API and the AWS components? 
 -	Are the APIs / usages pythonic such that my code remains concise and readable?
 
+<response / comment> python is 2nd most popular languge after Java in AWS space. therefore boto3 ando ther python SDKs get feature updates frequently. caveat, the python APIs are much higher level compared to the Java and CLI ones.
+
 ## High Level  Considerations 
 A non-exhaustive list of design decisions we need to make before we can evolve our codebase into the next phase.
 1.	Which AWS components integrate better with python and which have been known to struggle. 
